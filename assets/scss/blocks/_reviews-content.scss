@@ -1,0 +1,84 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.reviews-content {
+  position: relative;
+  width: 847rem;
+  height: 484rem;
+  @media (max-width: 1200px) {
+    width: 730rem;
+  }
+  @media (max-width: v.$bp-md) {
+    width: 328rem;
+    height: 337rem;
+  }
+
+  // .content-reviews__image-1
+
+  &__image-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 339rem;
+    height: 339rem;
+    @media (max-width: 1200px) {
+      width: 290rem;
+    }
+    @media (max-width: 768px) {
+      width: 253rem;
+      height: 253rem;
+    }
+  }
+
+  // .content-reviews__bg
+
+  &__bg {
+    width: 467rem;
+    height: 484rem;
+    background-color: v.$gray-300-stroke;
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // .content-reviews__image-2
+
+  &__image-2 {
+    position: absolute;
+    top: 39rem;
+    right: 0;
+    width: 467rem;
+    height: 404rem;
+    @media (max-width: 1200px) {
+      width: 400rem;
+    }
+    @media (max-width: 768px) {
+      width: 148rem;
+      height: 148rem;
+      top: 121rem;
+      z-index: 2;
+      right: 12rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  // .content-reviews__text
+
+  &__text {
+    bottom: 60rem;
+    width: 260rem;
+    position: absolute;
+    z-index: 1;
+
+    padding-left: 20rem;
+    border-left: 1rem solid v.$red-1000;
+    @media (max-width: v.$bp-md) {
+      bottom: 16rem;
+      left: 16rem;
+    }
+  }
+}

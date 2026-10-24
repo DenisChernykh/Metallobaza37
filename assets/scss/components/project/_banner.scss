@@ -1,0 +1,150 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+.banner {
+  // .banner__inner
+
+  &__inner {
+    height: 252rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 20rem;
+    padding: 40rem;
+    overflow: hidden;
+    border: 1rem solid v.$red-1000;
+    background-color: white;
+    @media (max-width: v.$bp-md) {
+      padding: 20rem;
+      flex-direction: column;
+      gap: 40rem;
+      height: auto;
+    }
+  }
+
+  // .banner__announcement
+
+  &__announcement {
+    flex-basis: 546rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 546rem;
+    h2 {
+      @media (max-width: v.$bp-md) {
+        width: 50%;
+      }
+    }
+    @media (max-width: v.$bp-md) {
+      width: auto;
+      flex-basis: auto;
+    }
+  }
+
+  // .banner__work-time
+  &__right {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: v.$bp-md) {
+      flex-direction: column;
+    }
+  }
+  &__work-time {
+    width: 272rem;
+    align-self: flex-end;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    p {
+      width: 168rem;
+      @media (max-width: v.$bp-md) {
+        width: 100%;
+      }
+    }
+    @media (max-width: v.$bp-md) {
+      width: 100%;
+      margin-bottom: 40rem;
+    }
+  }
+
+  &__image-bg {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+
+    top: -40rem;
+    bottom: -40rem;
+    right: 150rem;
+    @media (max-width: v.$bp-md) {
+      top: -60rem;
+      bottom: -70rem;
+      left: -200rem;
+      right: -200rem;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // .banner__logo
+
+  &__logo {
+    img {
+      width: auto;
+      max-width: auto;
+    }
+  }
+  .big-text-med {
+    @include t.big-text-med;
+  }
+}
+.container {
+}
+.h3 {
+}
+.h1 {
+}
+.work-time {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: v.$bp-md) {
+    column-gap: 14rem;
+    row-gap: 14rem;
+  }
+  &__row {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    align-items: center;
+    column-gap: 12rem;
+  }
+
+  &__date {
+    font-size: 20rem;
+    line-height: 140%;
+    font-weight: 700;
+    @media (max-width: v.$bp-md) {
+      font-size: 16rem;
+    }
+  }
+
+  &__dots {
+    height: 0;
+    border-bottom: 2rem dotted #bdbdbd;
+    transform: translateY(2rem);
+  }
+
+  &__note {
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
+.logo {
+  // .logo__img
+
+  &__img {
+  }
+}

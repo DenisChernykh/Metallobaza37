@@ -1,0 +1,104 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.feedback {
+  background-image: url(../../img/feedback/bg.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 80rem;
+  margin-top: 80rem;
+  overflow: hidden;
+  @media (max-width: v.$bp-md) {
+    margin-bottom: 44rem;
+    margin-top: 44rem;
+  }
+
+  .pattern {
+    bottom: 0;
+    top: auto;
+    z-index: 2;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .blur {
+    inset: 0;
+    position: absolute;
+    backdrop-filter: blur(5rem);
+    z-index: 1;
+    @media (min-width: 768px) {
+      width: calc((687 / 1920) * 100%);
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+  // .feedback__grid
+
+  &__grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  // .feedback__content
+
+  &__content {
+    color: v.$white;
+    grid-column: 1/2;
+    h2 {
+      margin-bottom: 30rem;
+      @media (max-width: 768px) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  // .feedback__text
+
+  &__text {
+    width: 450rem;
+    color: v.$gray-300-stroke;
+    @include t.body-med;
+    @media (max-width: 768px) {
+      margin-bottom: 24rem;
+      width: auto;
+    }
+  }
+
+  // .feedback__bottom
+
+  &__bottom {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    color: v.$white;
+    align-self: end;
+    @media (max-width: 768px) {
+      align-self: flex-start;
+      margin-bottom: 40rem;
+    }
+  }
+
+  // .feedback__bottom-text
+
+  &__bottom-text {
+    display: inline-block;
+    padding-top: 20rem;
+    border-top: 1rem solid v.$red-1000;
+  }
+
+  // .feedback__bottom-phone
+
+  &__bottom-phone {
+    text-decoration: underline;
+  }
+
+  // .feedback__form
+}
+.container {
+}

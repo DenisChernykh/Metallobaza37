@@ -1,0 +1,254 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.category {
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+  &__wrapper {
+    display: flex;
+    gap: 40rem;
+    justify-content: space-between;
+    @media (max-width: 1200px) {
+      gap: 20rem;
+    }
+    @media (max-width: 768px) {
+      flex-direction: column;
+      display: contents;
+    }
+  }
+  &__list.active {
+    background-color: v.$black;
+    svg path {
+      stroke: v.$white;
+    }
+  }
+  &__grid.active {
+    background-color: v.$black;
+    svg path {
+      stroke: v.$white;
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40rem;
+    height: 40rem;
+    cursor: pointer;
+  }
+  &__grid {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40rem;
+    height: 40rem;
+  }
+  &__toggle {
+    display: flex;
+    gap: 10rem;
+    @media (max-width: 768px) {
+      order: 3;
+    }
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30rem;
+    h4 {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin-bottom: 20rem;
+    }
+  }
+  &__control {
+    display: flex;
+    gap: 30rem;
+
+    @media (max-width: 768px) {
+      gap: 20rem;
+      display: contents;
+      flex-direction: column-reverse;
+    }
+  }
+  .catalog-grid__list {
+    margin-bottom: 40px;
+  }
+}
+.select__block select {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  visibility: hidden;
+}
+.select {
+  // .select__block
+
+  @include t.small-reg;
+  &__block {
+    position: relative;
+    width: 338rem;
+    @media (max-width: 768px) {
+      order: 2;
+      width: 100%;
+    }
+  }
+
+  // .select__list
+
+  &__list {
+    cursor: pointer;
+    position: relative;
+  }
+
+  // .select__title
+
+  &__title,
+  .vgselect__control,
+  .vgselect__value {
+    padding: 10rem 20rem;
+    background-color: v.$white;
+    display: flex;
+    justify-content: space-between;
+    min-height: 44rem;
+    align-items: center;
+    svg {
+      transition: all 0.3s ease;
+    }
+    &.open {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    @media (max-width: 768px) {
+      margin-bottom: 20rem;
+    }
+  }
+
+  // .select__options
+
+  &__options {
+    border: 1rem solid v.$gray-300-stroke;
+    position: absolute;
+    top: calc(100% + 10rem);
+    width: 100%;
+    transition: all 0.3s ease;
+    transform: translateY(15rem);
+    opacity: 0;
+    pointer-events: none;
+    &.open {
+      pointer-events: all;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(0);
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+
+  // .select__option
+
+  &__option {
+    padding: 10rem 20rem;
+    background-color: v.$white;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.category .catalog-grid .btn {
+  display: none;
+}
+
+.category .filter .btn {
+  display: block;
+  @media (max-width: v.$bp-md) {
+    margin-block: 0;
+  }
+}
+
+.vgselect__control {
+  padding: 10rem 20rem;
+  background-color: v.$white;
+  display: flex;
+  justify-content: space-between;
+  min-height: 44rem;
+  align-items: center;
+  position: relative;
+  &::after {
+    content: '';
+    width: 24rem;
+    height: 24rem;
+    position: absolute;
+    right: 16rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    filter: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+  }
+
+  &.open::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  svg {
+    transition: all 0.3s ease;
+  }
+  &.open {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  @media (max-width: 768px) {
+    margin-bottom: 20rem;
+  }
+}
+
+.vgselect__menu {
+  border: 1rem solid v.$gray-300-stroke;
+}
+
+.vgselect__option {
+  padding: 10rem 20rem;
+  background-color: v.$white;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  &:hover {
+    background-color: v.$red-1000;
+    color: v.$white;
+  }
+}
+
+.vgselect.open {
+  .vgselect__control {
+    &::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+}
+
+.vgselect__option.selected {
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 24rem;
+    height: 24rem;
+    right: 16rem;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 9L10.4375 16L7 12.8182' stroke='%23100F15' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  }
+}

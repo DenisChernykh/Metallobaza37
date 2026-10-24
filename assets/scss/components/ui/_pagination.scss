@@ -1,0 +1,76 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+.pagination {
+  margin: 0 auto;
+  margin-top: 40rem;
+  display: flex;
+  gap: 12rem;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1/-1;
+  @media (max-width: 768px) {
+    margin-top: 20rem;
+  }
+  // .pagination-number__arrow
+  &__arrow {
+    margin-left: 12rem;
+  }
+  &__list {
+    display: flex;
+    gap: 10rem;
+    @media (max-width: 768px) {
+      gap: 12rem;
+    }
+  }
+  // .pagination-number__arrow--prev
+
+  &__arrow--prev {
+    rotate: 180deg;
+    margin-right: 12rem;
+  }
+  &__arrow--prev[aria-disabled='true'],
+  &__arrow--next[aria-disabled='true'] {
+    display: none;
+  }
+  // .pagination-number__link
+
+  &__link {
+    width: 40rem;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1rem solid v.$gray-400;
+    @media (max-width: 768px) {
+      width: 36rem;
+      height: 36rem;
+    }
+    &:hover {
+      background-color: v.$gray-300-stroke;
+    }
+  }
+
+  // .pagination-number__link--active
+
+  &__link--active {
+    background-color: v.$black;
+    color: v.$white;
+  }
+
+  // .pagination-number__link--next
+
+  &__link--next {
+  }
+
+  &__link--all {
+    border: none;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  // .pagination-number__arrow--next
+
+  &__arrow--next {
+  }
+}

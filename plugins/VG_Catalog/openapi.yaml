@@ -1,0 +1,2074 @@
+openapi: 3.0.0
+info:
+  title: 'VG Cart API'
+  version: '1.0'
+paths:
+  /cart-get-list:
+    get:
+      tags:
+        - Cart
+      summary: 'Get cart items'
+      operationId: 054b0290395a26585aa75db8ca28e640
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Cart
+                required:
+                  - cart
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getList }
+                  data: { properties: { cart: { description: 'Cart element', type: array, items: { $ref: '#/components/schemas/Cart' } } }, type: object }
+                type: object
+  /cart-add:
+    post:
+      tags:
+        - Cart
+      summary: 'Add product to cart'
+      operationId: b564f7c41b14bc3a9acd404fce9509eb
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartAddDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Cart id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: add }
+                  data: { $ref: '#/components/schemas/CartIdDTO' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: add }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /cart-update:
+    patch:
+      tags:
+        - Cart
+      summary: 'Update cart'
+      operationId: 46aff4246e215c10ad5c0cfce06e1cc7
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartUpdateDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Cart id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: update }
+                  data: { $ref: '#/components/schemas/CartIdDTO' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /cart-delete:
+    delete:
+      tags:
+        - Cart
+      summary: 'Update cart'
+      operationId: 7be54a1c7530a9a53fa2273a59850616
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartRemoveDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: delete }
+                  data: { type: object }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /category-get-list:
+    get:
+      tags:
+        - Categories
+      summary: 'Get list categories'
+      operationId: e8bc804491b8cb421e6c7359f3279483
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterCategoriesDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Category
+                required:
+                  - categories
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getList }
+                  data: { properties: { categories: { description: Category, type: array, items: { $ref: '#/components/schemas/Category' } } }, type: object }
+                type: object
+  /category-get-by-id:
+    get:
+      tags:
+        - Categories
+      summary: 'Get category by id'
+      operationId: b515ffd498fb95d13eb35503d285eb2b
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Category
+                required:
+                  - category
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getById }
+                  data: { properties: { category: { $ref: '#/components/schemas/Category' } }, type: object }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Category not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /category-create:
+    post:
+      tags:
+        - Categories
+      summary: 'Create category'
+      operationId: 0510fb43d5f15f3e379f9138ed3f5806
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCategoryDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Category id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: create }
+                  data: { $ref: '#/components/schemas/CategoryIdDTO' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: create }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /category-update:
+    patch:
+      tags:
+        - Categories
+      summary: 'Update category'
+      operationId: 79e9700fb28523147d8d4eb092ea4664
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCategoryDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Category id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: update }
+                  data: { $ref: '#/components/schemas/CategoryIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Category not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /category-delete:
+    delete:
+      tags:
+        - Categories
+      summary: 'Delete category'
+      operationId: 647ae58f3d8066c9095d1cf979e21d9e
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Category id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: delete }
+                  data: { $ref: '#/components/schemas/CategoryIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Category not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /favorite-toggle:
+    post:
+      tags:
+        - Favorites
+      summary: 'Toggle favorite'
+      operationId: a1e142e4ca8a11aeb5d9fc256339930b
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Toggle favorite'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: addToFavorite }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: toggleFavorite }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /favorite-check:
+    get:
+      tags:
+        - Favorites
+      summary: 'Check is favorite'
+      operationId: 3995cb567f9b340a6c59302a597c80fa
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Is favorited'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: isFavorite }
+                  data: { description: Message, properties: { isFavorite: { description: Message, type: boolean, example: true } }, type: object }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: isFavorite }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /favorite-get-list:
+    get:
+      tags:
+        - Favorites
+      summary: 'Get favorites list'
+      operationId: 3d8f6e2709180ddf77593dbfcfe0260e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Products
+                required:
+                  - favorites
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getList }
+                  data: { properties: { favorites: { description: 'Favorites list', type: array, items: { $ref: '#/components/schemas/Product' } } }, type: object }
+                type: object
+  /group-options-create:
+    post:
+      tags:
+        - 'Group options'
+      summary: 'Create group options'
+      operationId: a7e403df9d2e6ef1a83125323d18e779
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupOptionDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Option
+                required:
+                  - option
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: create }
+                  data: { properties: { option: { $ref: '#/components/schemas/GroupOption' } }, type: object }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: create }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /group-options-get-list:
+    get:
+      tags:
+        - 'Group options'
+      summary: 'Get groups options list'
+      operationId: 405a7457b6d7b8e1ac3ed074f3d8c80e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Group options'
+                required:
+                  - group
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getList }
+                  data: { properties: { group: { description: 'Group options list', type: array, items: { $ref: '#/components/schemas/GroupOption' } } }, type: object }
+                type: object
+  /group-options-get-by-id:
+    get:
+      tags:
+        - 'Group options'
+      summary: 'Get group options by id'
+      operationId: 6bd4cacceb34d110c56fc3c67ee30e91
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupOptionIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Group options'
+                required:
+                  - group
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getById }
+                  data: { properties: { group: { $ref: '#/components/schemas/GroupOption' } }, type: object }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Group option not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /group-options-update:
+    patch:
+      tags:
+        - 'Group options'
+      summary: 'Update group options'
+      operationId: 3bdd3e290bd1540db45b544e58fa7748
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupOptionDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Group option id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: update }
+                  data: { $ref: '#/components/schemas/GroupOptionIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Group option not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /group-options-delete:
+    delete:
+      tags:
+        - 'Group options'
+      summary: 'Delete group options'
+      operationId: e5ecb3f427e594c7ef2629eedffb34fb
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupOptionIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Group option id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: delete }
+                  data: { $ref: '#/components/schemas/GroupOptionIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Group option not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /option-create:
+    post:
+      tags:
+        - Options
+      summary: 'Create option'
+      operationId: 2b2a8c56f44b5808a78e8b57c7bcffc5
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOptionDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Option
+                required:
+                  - option
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: create }
+                  data: { properties: { option: { $ref: '#/components/schemas/Option' } }, type: object }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: create }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /option-get-list:
+    get:
+      tags:
+        - Options
+      summary: 'Get options list'
+      operationId: fd0418f01549251a458aa1c1df21e316
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Options
+                required:
+                  - options
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getList }
+                  data: { properties: { options: { description: 'Options list', type: array, items: { $ref: '#/components/schemas/Option' } } }, type: object }
+                type: object
+  /option-get-by-id:
+    get:
+      tags:
+        - Options
+      summary: 'Get option by id'
+      operationId: 934381ae1c09fbbe48cf5f8e273a04d6
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Option
+                required:
+                  - option
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getById }
+                  data: { properties: { option: { $ref: '#/components/schemas/Product' } }, type: object }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Option not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /option-update:
+    patch:
+      tags:
+        - Options
+      summary: 'Update option'
+      operationId: d23e00b6a28e35f98ad624062d485d3a
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOptionDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Option id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: update }
+                  data: { $ref: '#/components/schemas/OptionIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Option not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /option-delete:
+    delete:
+      tags:
+        - Options
+      summary: 'Delete option'
+      operationId: dc4bd1ca32f9ec43f1923dda8c895ae2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Option id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: delete }
+                  data: { $ref: '#/components/schemas/OptionIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Option not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /order-get-list:
+    get:
+      tags:
+        - Orders
+      summary: 'Get orders list'
+      operationId: 8c6d4f32c52e79dd48a0807debc4da7f
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FiltersOrdersDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Orders
+                required:
+                  - orders
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getList }
+                  data: { properties: { orders: { description: 'Orders list', type: array, items: { $ref: '#/components/schemas/Order' } } }, type: object }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getList }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /order-get-by-id:
+    get:
+      tags:
+        - Orders
+      summary: 'Get order by id'
+      operationId: c1f00cdcb97dcd358ada4854bbf0d7ab
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Order
+                required:
+                  - order
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getById }
+                  data: { properties: { order: { $ref: '#/components/schemas/Order' } }, type: object }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Order not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /order-create:
+    post:
+      tags:
+        - Orders
+      summary: 'Create order'
+      operationId: a5f7ab648121f3794727effc33f67460
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Order id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: create }
+                  data: { $ref: '#/components/schemas/OrderIdDTO' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: create }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /order-delete:
+    delete:
+      tags:
+        - Orders
+      summary: 'Delete order'
+      operationId: c1776b9e420b6fbc0fd5a89017a77658
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Order id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: delete }
+                  data: { $ref: '#/components/schemas/OrderIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Order not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /order-update:
+    patch:
+      tags:
+        - Orders
+      summary: 'Update order'
+      operationId: a66843e6257c3dd5ae9df0d1995774dd
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Order id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: update }
+                  data: { $ref: '#/components/schemas/OrderIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Order not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /product-create:
+    post:
+      tags:
+        - Products
+      summary: 'Create product'
+      operationId: 4b72f746de25e8f293282d3ff9312f5c
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Product
+                required:
+                  - product
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: create }
+                  data: { properties: { product: { $ref: '#/components/schemas/Product' } }, type: object }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: create }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /product-update:
+    patch:
+      tags:
+        - Products
+      summary: 'Update product'
+      operationId: 12fc87bb1c0032f6824de8b538954393
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProductDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Product id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: update }
+                  data: { $ref: '#/components/schemas/ProductIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Product not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: update }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /product-delete:
+    delete:
+      tags:
+        - Products
+      summary: 'Delete product'
+      operationId: 73e9e236a6fb44afba8f231bc739eb6a
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteProductDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: 'Product id'
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: delete }
+                  data: { $ref: '#/components/schemas/ProductIdDTO' }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Product not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: delete }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /product-get-list:
+    get:
+      tags:
+        - Products
+      summary: 'Get products list'
+      operationId: 49f6f002335b73843faf173342a7767b
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FiltersProductDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Products
+                required:
+                  - products
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getList }
+                  data: { properties: { products: { description: 'Products list', type: array, items: { $ref: '#/components/schemas/Product' } } }, type: object }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getList }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+  /product-get-by-id:
+    get:
+      tags:
+        - Products
+      summary: 'Get product by id'
+      operationId: 042aeda3b889603a82f8aa192950978f
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductIdDTO'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Product
+                required:
+                  - product
+                properties:
+                  success: { type: boolean, example: true }
+                  action: { type: object, example: getById }
+                  data: { properties: { product: { $ref: '#/components/schemas/Product' } }, type: object }
+                type: object
+        '404':
+          description: 'Not found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Product not found' }
+                type: object
+        '422':
+          description: 'Unprocessable content'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  action: { type: object, example: getById }
+                  data: { description: Message, type: string, example: 'Ошибка валидации' }
+                type: object
+components:
+  schemas:
+    PaginationDTO:
+      properties:
+        page:
+          type: integer
+          default: 1
+          example: 1
+        limit:
+          description: 'For limit 0 there is no pagination'
+          type: integer
+          default: 10
+          example: 10
+      type: object
+    Cart:
+      title: Cart
+      description: 'Cart model'
+      required:
+        - id
+        - user_id
+        - product_id
+        - quantity
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Cart item id'
+          type: integer
+          example: 1
+        user_id:
+          description: 'User id'
+          type: integer
+          example: 1
+        product_id:
+          description: 'Product id'
+          type: integer
+          example: 1
+        quantity:
+          description: 'Product quantity'
+          type: integer
+          example: 1
+        options:
+          items:
+            $ref: '#/components/schemas/CartOptions'
+        product:
+          $ref: '#/components/schemas/Product'
+        created_at:
+          description: 'Date when cart created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date when cart updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+    CartOptions:
+      title: Cart
+      description: 'Cart model'
+      required:
+        - id
+        - cart_id
+        - option
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Cart item id'
+          type: integer
+          example: 1
+        cart_id:
+          description: 'Cart id'
+          type: integer
+          example: 1
+        option:
+          $ref: '#/components/schemas/Option'
+        created_at:
+          description: 'Date when cart created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date when cart updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+    CartAddDTO:
+      required:
+        - product_id
+      properties:
+        product_id:
+          type: integer
+          example: 1
+        quantity:
+          type: integer
+          example: 1
+        option_ids:
+          type: array
+          example:
+            - 1
+            - 2
+      type: object
+    CartIdDTO:
+      required:
+        - cart_id
+      properties:
+        cart_id:
+          type: integer
+          example: 1
+      type: object
+    CartRemoveDTO:
+      required:
+        - cart_id
+      properties:
+        cart_id:
+          type: integer
+          example: 1
+      type: object
+    CartUpdateDTO:
+      required:
+        - cart_id
+      properties:
+        cart_id:
+          type: integer
+          example: 1
+        quantity:
+          type: integer
+          example: 1
+        option_ids:
+          type: array
+          example:
+            - 1
+            - 2
+      type: object
+    Category:
+      title: Category
+      required:
+        - id
+        - name
+        - slug
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Term id'
+          type: integer
+          example: 1
+        name:
+          description: 'Category name'
+          type: string
+          example: 'Category name'
+        slug:
+          description: 'Category slug'
+          type: string
+          example: Category-slug
+        description:
+          description: 'Category description'
+          type: string
+          example: 'Category description'
+        parent:
+          description: 'Category parent id'
+          type: integer
+          example: 2
+        link:
+          description: 'Category link'
+          type: string
+          example: 'http://example.com/?vg_product_category=api_link'
+        image:
+          description: 'Category image url'
+          type: string
+          example: 'http://example.com/wp-content/uploads/2025/10/test.jpg'
+      type: object
+    CategoryIdDTO:
+      required:
+        - category_id
+      properties:
+        category_id:
+          description: 'Term ID'
+          type: integer
+          example: 1
+      type: object
+    CreateCategoryDTO:
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: 'category name'
+        slug:
+          type: string
+          example: 'category slug'
+        description:
+          type: string
+          example: 'category description'
+        parent_id:
+          description: 'ID of the parent term'
+          type: integer
+          example: 2
+        image:
+          description: 'Image ID'
+          type: integer
+          example: 12
+        weight:
+          description: 'Category weight'
+          type: integer
+          example: 10
+      type: object
+    FilterCategoriesDTO:
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/PaginationDTO'
+        -
+          properties:
+            parent_id:
+              description: 'Parent id'
+              type: integer
+              example: 1
+          type: object
+    UpdateCategoryDTO:
+      required:
+        - name
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/CategoryIdDTO'
+        -
+          properties:
+            name:
+              type: string
+              example: 'category name'
+            slug:
+              type: string
+              example: 'category slug'
+            description:
+              type: string
+              example: 'category description'
+            parent_id:
+              description: 'ID of the parent term'
+              type: integer
+              example: 2
+            image:
+              description: 'Image ID'
+              type: integer
+              example: 12
+          type: object
+    CreateGroupOptionDTO:
+      required:
+        - title
+      properties:
+        title:
+          type: string
+          example: 'some title'
+        required:
+          type: boolean
+          example: true
+        multiple:
+          type: boolean
+          example: true
+      type: object
+    GroupOptionIdDTO:
+      properties:
+        group_option_id:
+          type: integer
+          example: 1
+      type: object
+    UpdateGroupOptionDTO:
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/GroupOptionIdDTO'
+        -
+          properties:
+            title:
+              type: string
+              example: 'some title'
+            required:
+              type: boolean
+              example: true
+            multiple:
+              type: boolean
+              example: true
+          type: object
+    GroupOption:
+      title: 'Group option'
+      description: 'Group option model'
+      required:
+        - id
+        - post_id
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Option id'
+          type: integer
+          example: 1
+        post_id:
+          description: 'Post option id'
+          type: integer
+          example: 1
+        title:
+          description: 'Option title'
+          type: string
+          example: 1
+        required:
+          description: 'Required group to choose'
+          type: boolean
+          example: true
+        multiple:
+          description: 'Group multiple choose'
+          type: boolean
+          example: true
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/Option'
+        created_at:
+          description: 'Date time when option created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date time when option updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+    CreateOptionDTO:
+      required:
+        - title
+        - group_id
+      properties:
+        title:
+          type: string
+          example: 'some title'
+        additional:
+          type: array
+          example:
+            -
+              title: 'some title'
+              value: 'some value'
+            -
+              title: 'some title 2'
+              value: 'some value 2'
+        group_id:
+          type: integer
+          example: 1
+      type: object
+    OptionIdDTO:
+      properties:
+        option_id:
+          type: integer
+          example: 1
+      type: object
+    UpdateOptionDTO:
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/OptionIdDTO'
+        -
+          properties:
+            title:
+              type: string
+              example: 'some title'
+            additional:
+              type: array
+              example:
+                -
+                  title: 'some title'
+                  value: 'some value'
+                -
+                  title: 'some title 2'
+                  value: 'some value 2'
+          type: object
+    Option:
+      title: Option
+      description: 'Option model'
+      required:
+        - id
+        - post_id
+        - group_id
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Option id'
+          type: integer
+          example: 1
+        post_id:
+          description: 'Post option id'
+          type: integer
+          example: 1
+        title:
+          description: 'Option title'
+          type: string
+          example: 1
+        group_id:
+          description: 'Option group id'
+          type: integer
+          example: 1
+        additional:
+          description: 'Additional params'
+          type: array
+          example:
+            -
+              title: 'some title'
+              value: 'some value'
+            -
+              title: 'some title 2'
+              value: 'some value 2'
+        created_at:
+          description: 'Date time when option created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date time when option updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+    CreateOrderDTO:
+      required:
+        - title
+        - email
+        - phone
+        - cart_ids
+      properties:
+        name:
+          type: string
+          example: 'User name'
+        additional:
+          type: array
+          example:
+            email: example@gmail.com
+        phone:
+          type: string
+          example: 'User phone number'
+        cart_ids:
+          type: array
+          example:
+            - 1
+            - 2
+      type: object
+    FiltersOrdersDTO:
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/PaginationDTO'
+        -
+          properties:
+            status:
+              type: string
+              enum:
+                - COMPLETED
+                - CANCELED
+                - WAITING
+                - PROGRESS
+              example: PROGRESS
+          type: object
+    OrderIdDTO:
+      required:
+        - order_id
+      properties:
+        product_id:
+          type: integer
+          example: 1
+      type: object
+    UpdateOrderDTO:
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/OrderIdDTO'
+        -
+          properties:
+            status:
+              type: string
+              enum:
+                - COMPLETED
+                - CANCELED
+                - WAITING
+                - PROGRESS
+              example: COMPLETED
+          type: object
+    Order:
+      title: Order
+      description: 'Order model'
+      required:
+        - id
+        - name
+        - phone
+        - email
+        - items
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Order id'
+          type: integer
+          example: 1
+        name:
+          description: 'User name'
+          type: string
+          example: 'FirstName Lastname'
+        phone:
+          description: 'User phone'
+          type: string
+          example: '79009009090'
+        additional:
+          description: 'Additional data'
+          type: array
+          example:
+            email: example@gmail.com
+        items:
+          description: 'Order items'
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItems'
+        user_id:
+          type: integer
+          example: 1
+        status:
+          type: string
+          enum:
+            - COMPLETED
+            - CANCELED
+            - WAITING
+            - PROGRESS
+          example: PROGRESS
+        created_at:
+          description: 'Date when product created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date when product updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+    OrderItems:
+      title: 'Order items'
+      description: 'OrderItem model'
+      required:
+        - id
+        - order_id
+        - product
+        - quantity
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Order item id'
+          type: integer
+          example: 1
+        product:
+          $ref: '#/components/schemas/Product'
+        quantity:
+          type: integer
+          example: 10
+        options:
+          items:
+            $ref: '#/components/schemas/Option'
+        created_at:
+          description: 'Date when product created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date when product updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+    CreateProductDTO:
+      required:
+        - title
+        - description
+        - price
+        - sale_price
+        - sku
+      properties:
+        post_id:
+          description: 'Post ID, if post exsist'
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: 'Product title'
+        description:
+          type: string
+          example: 'Product description'
+        price:
+          type: number
+          format: float
+          example: 10
+        sale_price:
+          type: number
+          format: float
+          example: 9
+        main_image:
+          type: integer
+          example: 1
+        gallery:
+          type: object
+          example:
+            - 1
+            - 2
+        categories:
+          type: object
+          example:
+            - 1
+            - 2
+        sku:
+          type: string
+          example: article
+        unit_id:
+          type: integer
+          example: 1
+        status:
+          type: string
+          example: publish
+        groups_options:
+          type: object
+          example:
+            - 1
+            - 2
+      type: object
+    DeleteProductDTO:
+      allOf:
+        -
+          $ref: '#/components/schemas/ProductIdDTO'
+    FiltersProductDTO:
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/PaginationDTO'
+        -
+          properties:
+            title:
+              type: string
+              example: 'Product title'
+            price_min:
+              type: number
+              format: float
+              example: 8
+            price_max:
+              type: number
+              format: float
+              example: 10
+            category_id:
+              type: integer
+              example: 1
+            sort_by:
+              type: string
+              example: created_at
+            sort_type:
+              type: string
+              example: asc
+          type: object
+    ProductIdDTO:
+      required:
+        - product_id
+      properties:
+        product_id:
+          type: integer
+          example: 1
+      type: object
+    UpdateProductDTO:
+      type: object
+      allOf:
+        -
+          $ref: '#/components/schemas/ProductIdDTO'
+        -
+          properties:
+            title:
+              type: string
+              example: 'Product title'
+            description:
+              type: string
+              example: 'Product description'
+            price:
+              type: number
+              format: float
+              example: 10
+            sale_price:
+              type: number
+              format: float
+              example: 9
+            unit_id:
+              type: integer
+              example: 1
+            sku:
+              type: string
+              example: article
+            status:
+              type: string
+              example: publish
+            main_image:
+              type: integer
+              example: 1
+            gallery:
+              type: object
+              example:
+                - 1
+                - 2
+            categories:
+              type: object
+              example:
+                - 1
+                - 2
+          type: object
+    Product:
+      title: Product
+      description: 'Product model'
+      required:
+        - id
+        - title
+        - description
+        - price
+        - sale_price
+        - sku
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Product id'
+          type: integer
+          example: 1
+        title:
+          description: 'Product title'
+          type: string
+          example: 'Product title'
+        description:
+          description: 'Product description'
+          type: string
+          example: 'Product description'
+        price:
+          description: 'Product price'
+          type: number
+          format: float
+          example: 10
+        sale_price:
+          description: 'Product sale price'
+          type: number
+          format: float
+          example: 9
+        main_image:
+          description: 'Title image'
+          type: string
+          example: 'http://example.com/image.jpg'
+        gallery:
+          description: 'Product gallery images'
+          type: array
+          items:
+            description: Image
+            type: string
+            example: 'http://example.com/image.jpg'
+        categories:
+          description: 'Product categories'
+          properties:
+            term_id:
+              type: integer
+              example: 1
+            name:
+              type: string
+              example: 'Category name'
+            slug:
+              type: string
+              example: 'Category slug'
+            term_group:
+              type: integer
+              example: 1
+            term_taxonomy_id:
+              type: integer
+              example: 1
+            taxonomy:
+              type: string
+              example: vg_product_category
+            description:
+              type: string
+              example: description
+            parent:
+              type: integer
+              example: 1
+            count:
+              type: integer
+              example: 1
+            filter:
+              type: string
+              example: raw
+          type: array
+        sku:
+          type: string
+          example: article
+        unit:
+          type: string
+          example: unit
+        post_id:
+          type: integer
+          example: 1
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductGroup'
+        created_at:
+          description: 'Date when product created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date when product updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+    ProductGroup:
+      title: 'Product groups'
+      description: 'Product groups model'
+      required:
+        - id
+        - product_id
+        - group_id
+        - created_at
+        - updated_at
+      properties:
+        id:
+          description: 'Product group id'
+          type: integer
+          example: 1
+        product_id:
+          description: 'Product id'
+          type: integer
+          example: 1
+        group_id:
+          description: 'Group id'
+          type: integer
+          example: 1
+        group:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupOption'
+        created_at:
+          description: 'Date time when product group created'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+        updated_at:
+          description: 'Date time when product group updated'
+          type: string
+          format: date-time
+          example: '2000-01-01 00:00:00'
+      type: object
+tags:
+  -
+    name: Cart
+    description: 'Actions with cart'
+  -
+    name: Categories
+    description: 'Actions with categories'
+  -
+    name: Favorites
+    description: 'Actions with favorites'
+  -
+    name: 'Group options'
+    description: 'Actions with group options'
+  -
+    name: Options
+    description: 'Actions with option'
+  -
+    name: Orders
+    description: 'Actions with order'
+  -
+    name: Products
+    description: 'Actions with products'

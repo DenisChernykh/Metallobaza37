@@ -1,0 +1,17 @@
+# Игнорируем все lock-файлы
+*.lock
+
+# Игнорируем папку vendor
+/vendor/
+
+# Игнорируем все логи
+*.log
+
+*.sublime-project
+*.sublime-workspace
+/.idea/
+/.vscode/
+/.DS_Store
+.DS_Store
+Thumbs.db
+!composer.lock

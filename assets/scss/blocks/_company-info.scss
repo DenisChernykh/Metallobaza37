@@ -1,0 +1,77 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.company-info {
+  // .company-info__content
+  .pattern {
+    rotate: 90deg;
+  }
+  &__content {
+    display: flex;
+    gap: 40rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  //.company-info__top
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin-bottom: 24rem;
+    }
+  }
+
+  // .company-info__image
+
+  &__image {
+    flex: 1;
+    position: relative;
+    @media (max-width: 768px) {
+      order: 2;
+    }
+  }
+
+  // .company-info__text-block
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    @media (max-width: 768px) {
+      order: 1;
+    }
+  }
+
+  // .company-info__heading
+
+  &__heading {
+    padding: 30rem;
+    background-color: v.$gray-300-stroke;
+    @media (max-width: 768px) {
+      margin-bottom: 32rem;
+    }
+  }
+
+  // .company-info__text
+
+  &__text {
+    width: 593rem;
+    color: v.$gray-800;
+    @media (max-width: v.$bp-md) {
+      width: auto;
+    }
+  }
+}
+
+.company-info__text-block p + p {
+  margin-top: 20rem;
+  @media (max-width: 768px) {
+    margin-top: 8px;
+  }
+}

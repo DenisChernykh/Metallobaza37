@@ -1,0 +1,287 @@
+:root {
+  --vgalert-bg: #fff;
+  --vgalert-message-color: #000;
+  --vgalert-title-color: #000;
+  --vgalert-success-color: #00980A;
+  --vgalert-error-color: #980000;
+  --vgalert-close-color: #000;
+  --vgalert-button-confirm-bg: #00980A;
+  --vgalert-button-confirm-bg-hover: #04b010;
+  --vgalert-button-confirm-text: #fff;
+  --vgalert-button-cancel-bg: #980000;
+  --vgalert-button-cancel-bg-hover: #040202;
+  --vgalert-button-cancel-text: #fff;
+}
+
+.vgalert {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10rem;
+  padding: 15rem 20rem;
+  background-color: var(--vgalert-bg, #fff);
+  color: var(--vgalert-message-color, #000);
+  box-shadow: 0 4rem 4rem 0 rgba(0, 0, 0, .12);
+  color: var(--black, #000);
+  font-size: 18rem;
+  font-weight: 400;
+  border-radius: 12rem;
+  opacity: 0;
+  transition: .35s ease;
+  z-index: 9999;
+  max-width: 450rem;
+
+  @media (max-width: 768px) {
+    font-size: 16rem;
+    max-width: 350rem;
+  }
+
+  &[data-vgalert-theme="auto"] {
+    @media (prefers-color-scheme: light) {
+      --vgalert-bg: #fff;
+      --vgalert-title-color: #000;
+      --vgalert-message-color: #000;
+      --vgalert-success-color: #00980A;
+      --vgalert-close-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      --vgalert-bg: #454545;
+      --vgalert-title-color: #dddddd;
+      --vgalert-message-color: #c4c4c4;
+      --vgalert-success-color: #00980A;
+      --vgalert-close-color: #acacac;
+    }
+  }
+
+  &[data-vgalert-theme="dark"] {
+    --vgalert-bg: #454545;
+    --vgalert-title-color: #dddddd;
+    --vgalert-message-color: #c4c4c4;
+    --vgalert-success-color: #00980A;
+    --vgalert-close-color: #acacac;
+  }
+
+  &[data-vgalert-parent]:not(.show) {
+    &[data-vgalert-position*="top"] {
+      transform: translateY(30rem);
+    }
+
+    &[data-vgalert-position*="bottom"] {
+      transform: translateY(-30rem);
+    }
+
+    &[data-vgalert-position*="right"] {
+      transform: translateX(-30rem);
+    }
+
+    &[data-vgalert-position*="left"] {
+      transform: translateX(30rem);
+    }
+  }
+
+  // Если в атрибуте data-vgalert-position указан "top", элемент появляется сверху.
+  &[data-vgalert-position*="top"] {
+    transform: translateY(-30rem) scale(.8);
+  }
+
+  // Если указан "bottom", элемент изначально смещён вниз.
+  &[data-vgalert-position*="bottom"] {
+    transform: translateY(30rem) scale(.8);
+  }
+
+  // Если указан "left" – появление с левой стороны.
+  &[data-vgalert-position*="left"] {
+    transform: translateX(-30rem) scale(.8);
+  }
+
+  // Если указан "right" – появление с правой стороны.
+  &[data-vgalert-position*="right"] {
+    transform: translateX(30rem) scale(.8);
+  }
+
+  // Если указан "center center" (и нет конкретики по направлению) можно задать лёгкое масштабирование:
+  &[data-vgalert-position="center center"] {
+    transform: scale(0.8);
+  }
+
+  // При наличии класса .show, transform сбрасывается в нормальное состояние
+  // (то есть translate(0) или scale(1)), а opacity становится 1.
+  &.show {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+
+  &--shake {
+    animation: vgalert-shake-anim .5s cubic-bezier(.36, .07, .19, .97) both;
+  }
+
+  &.success {
+    padding-left: 45rem;
+    border-bottom: 4rem solid var(--vgalert-success-color, #00980A);
+
+    &:before {
+      content: "";
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M9.33325 15.8378C10.5885 16.7507 13.099 19.2612 14.126 20.9729C15.3813 18.2342 18.5765 12.072 21.9999 9.33325' stroke='%2300980A' stroke-width='2.66667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-color: var(--vgalert-success-color, #00980A);
+      width: 32rem;
+      height: 32rem;
+      position: absolute;
+      left: 10rem;
+      top: 10rem;
+    }
+  }
+
+  &.error {
+    padding-left: 45rem;
+    border-bottom: 4rem solid var(--vgalert-error-color, #980000);
+
+    &:before {
+      content: "";
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='26' viewBox='0 0 30 26' fill='none'%3E%3Cpath d='M13.2635 1.03885C14.0313 -0.30478 15.9687 -0.30478 16.7364 1.03885L29.2901 23.0077C30.052 24.341 29.0892 26 27.5536 26H2.44631C0.91067 26 -0.0520651 24.341 0.709828 23.0077L13.2635 1.03885Z' fill='%23980000'/%3E%3Cpath d='M16.0799 9.61572L15.8886 17.9983H14.0219L13.8364 9.61572H16.0799ZM14.9552 21.6157C14.6036 21.6157 14.3021 21.4921 14.0509 21.2447C13.8036 20.9974 13.6799 20.6959 13.6799 20.3404C13.6799 19.9925 13.8036 19.6949 14.0509 19.4476C14.3021 19.2003 14.6036 19.0766 14.9552 19.0766C15.2992 19.0766 15.5968 19.2003 15.848 19.4476C16.1031 19.6949 16.2306 19.9925 16.2306 20.3404C16.2306 20.5761 16.1707 20.7906 16.0509 20.9838C15.935 21.1771 15.7804 21.3317 15.5871 21.4476C15.3978 21.5597 15.1871 21.6157 14.9552 21.6157Z' fill='white'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 27rem;
+      height: 25rem;
+      position: absolute;
+      left: 10rem;
+      top: 14rem;
+    }
+  }
+
+  &:has(.vgalert-close) {
+    .vgalert-title {
+      padding-right: 40rem;
+    }
+
+    .vgalert-message {
+      padding-right: 0;
+    }
+  }
+
+  &:has(.vgalert-title) {
+    .vgalert-message {
+      padding-right: 0;
+    }
+  }
+
+  &-title {
+    flex: 1 1 100%;
+    font-weight: 600;
+    font-size: 20rem;
+    color: var(--vgalert-title-color, #000);
+
+    @media (max-width: 768px) {
+      font-size: 16rem;
+    }
+  }
+
+  &-message {
+    font-size: 18rem;
+    color: var(--vgalert-message-color, #000);
+
+    @media (max-width: 768px) {
+      font-size: 14rem;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 15rem;
+    right: 15rem;
+    cursor: pointer;
+    color: var(--vgalert-close-color, #fff);
+  }
+
+  &-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10rem;
+    margin-top: 10rem;
+  }
+
+  &-confirm,
+  &-cancel {
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8rem;
+    padding: 10rem 18rem;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+  }
+
+  &-confirm {
+    background-color: var(--vgalert-button-confirm-bg);
+    color: var(--vgalert-button-confirm-text, #fff);
+
+    &:hover {
+      background-color: var(--vgalert-button-confirm-bg-hover, #b20000);
+    }
+  }
+
+  &-cancel {
+    background-color: var(--vgalert-button-cancel-bg);
+    color: var(--vgalert-button-cancel-text, #fff);
+    margin-left: auto;
+
+    &:hover {
+      background-color: var(--vgalert-button-cancel-bg-hover, #b20000);
+    }
+  }
+}
+
+.vgalert-overlay {
+  position: fixed;
+  z-index: 9998;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+
+@keyframes vgalert-shake-anim {
+
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-5px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: none;
+  }
+}

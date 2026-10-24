@@ -1,0 +1,40 @@
+.underLink {
+  position: relative;
+}
+.underLink:after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1rem;
+  width: 100%;
+  background: black;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: right;
+  -ms-transform-origin: right;
+  transform-origin: right;
+  -webkit-transition: -webkit-transform 600ms cubic-bezier(0.25, 0, 0, 1);
+  transition: -webkit-transform 600ms cubic-bezier(0.25, 0, 0, 1);
+  -o-transition: transform 600ms cubic-bezier(0.25, 0, 0, 1);
+  transition: transform 600ms cubic-bezier(0.25, 0, 0, 1);
+  transition: transform 600ms cubic-bezier(0.25, 0, 0, 1),
+    -webkit-transform 600ms cubic-bezier(0.25, 0, 0, 1);
+}
+@media (hover: hover) {
+  .underLink:hover::after {
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    -ms-transform-origin: left;
+    transform-origin: left;
+  }
+}
+
+.underLink--white:after {
+  background: white;
+}
+

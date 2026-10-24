@@ -1,0 +1,16 @@
+:root {
+    --main-font: "Gilroy", Arial, Helvetica, sans-serif;
+    --second-font: "Magistral", Arial, Helvetica, Helvetica Neue, sans-serif;
+    --white: #fff;
+    --black: #000;
+    --danger: #E03130;
+    --success: #1EBA45;
+    --green: #1EBA45;
+    --red: var(--success);
+    --main-color: #78DE13;
+    --border-radius: 18rem;
+}
+
+$mobile: 768px;
+$tablet: 1280px;
+$desktop: 1920px;

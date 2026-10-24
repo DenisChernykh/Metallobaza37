@@ -1,0 +1,14 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+.form-error,
+.error-text {
+  color: v.$red-active;
+  position: absolute;
+  top: 0%;
+	right: 0;
+  @include t.small-reg;
+}
+
+[data-vgform-form-error] .checkbox__box {
+border-color: v.$red-1000;
+}

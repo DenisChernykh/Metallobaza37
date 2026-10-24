@@ -1,0 +1,70 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.promotions {
+  background-color: v.$gray-50-background;
+  .swiper {
+    margin-right: -16rem;
+    padding-right: 16rem;
+  }
+  .swiper-slide {
+    height: auto;
+  }
+  .container {
+    @media (max-width: v.$bp-md) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .text-icon-button {
+    @media (max-width: v.$bp-md) {
+      order: 3;
+      margin-top: 24rem;
+    }
+  }
+  .h2 {
+    @media (max-width: v.$bp-md) {
+      margin-bottom: 24rem;
+    }
+  }
+
+  .swiper-pagination {
+    position: static;
+  }
+  .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background-color: v.$red-1000;
+  }
+  .slider-button {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid v.$gray-300-stroke;
+
+    &--next {
+      right: 0;
+      transform: translate(50%, -50%) rotate(180deg);
+    }
+    &--prev {
+      left: 0;
+      svg {
+        fill: v.$black;
+      }
+      transform: translate(-50%, -50%);
+    }
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .swiper {
+    margin-bottom: 60px;
+    @media (max-width: v.$bp-md) {
+      margin-bottom: 24rem;
+      padding-inline: 16rem;
+      margin-inline: -16rem;
+    }
+  }
+  .slider {
+    position: relative;
+  }
+}

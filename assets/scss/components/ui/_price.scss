@@ -1,0 +1,23 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+.current {
+  @include t.big-text-bold;
+  @media (max-width: v.$bp-md) {
+    font-size: 14rem;
+  }
+  .unit {
+    color: v.$gray-600;
+    @include t.body-med;
+    @media (max-width: v.$bp-md) {
+      font-size: 12rem;
+    }
+  }
+}
+.old {
+  color: v.$gray-600;
+  text-decoration: line-through;
+  @include t.body-med;
+  @media (max-width: v.$bp-md) {
+    font-size: 12rem;
+  }
+}

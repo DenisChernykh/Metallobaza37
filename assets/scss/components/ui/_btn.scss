@@ -1,0 +1,247 @@
+@use '../../base/typography' as t;
+@use '../../base/variables' as v;
+.btn {
+  display: inline-flex;
+  padding-inline: 25rem;
+  height: 50rem;
+  align-items: center;
+  justify-content: center;
+  background-color: v.$white;
+  border: 1rem solid v.$red-1000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  @include t.small-reg;
+  &:hover {
+    background-color: v.$red-1200;
+    color: v.$white;
+  }
+  &:active {
+    background-color: v.$red-active;
+  }
+  &--stroke {
+    color: v.$black;
+    border: 1rem solid v.$red-1000;
+  }
+  &:disabled {
+    background-color: v.$gray-150;
+    border: 1rem solid v.$gray-400;
+    color: v.$gray-600;
+  }
+  &[hidden] {
+    display: none;
+  }
+  @media (max-width: v.$bp-md) {
+    height: 44rem;
+  }
+}
+
+.btn--long {
+  width: 300rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50rem;
+  padding: 0;
+}
+
+.btn--black {
+  background-color: v.$black;
+  color: v.$white;
+  border: 1rem solid v.$black;
+  &:hover {
+    background-color: v.$black;
+  }
+}
+
+.btn--fill {
+  background-color: v.$red-1000;
+  color: v.$white;
+  border: none;
+  &:disabled {
+    background-color: v.$gray-400;
+    color: v.$white;
+  }
+}
+
+.slider-button {
+  width: 70rem;
+  height: 70rem;
+  background-color: v.$white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: 1rem solid v.$white;
+
+  svg {
+    width: 24rem;
+    height: 22rem;
+    stroke: v.$red-1000;
+    stroke-width: 0.6;
+
+    @media (max-width: v.$bp-md) {
+      width: 16rem;
+      height: 14rem;
+    }
+  }
+
+  &:hover {
+    background-color: v.$red-1000;
+    border: 1rem solid v.$white;
+    svg path {
+      fill: v.$white;
+      stroke: v.$white;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 48rem;
+    height: 48rem;
+  }
+  &:disabled {
+    background-color: v.$gray-300-stroke;
+    pointer-events: none;
+    border: 1rem solid v.$gray-300-stroke;
+    svg path {
+      fill: v.$gray-600;
+      stroke: v.$gray-600;
+    }
+  }
+
+  &--next {
+    svg {
+      rotate: 180deg;
+    }
+  }
+}
+
+.btn--add-to-cart {
+  padding: 7rem;
+
+  .icon {
+    color: white;
+  }
+}
+
+.btn--add-to-cart.hidden {
+  display: none;
+}
+
+.text-icon-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 50rem;
+
+  &:hover {
+    .btn-icon {
+      right: 0;
+      transform: translateX(0%);
+    }
+    .text {
+      padding-left: 20rem;
+      background-color: v.$white;
+      color: v.$black;
+      padding-right: 60rem;
+    }
+  }
+  .btn-icon {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 50rem;
+    height: 50rem;
+    background-color: v.$white;
+    transition: all 0.3s ease;
+    right: 100%;
+    transform: translateX(100%);
+
+    @media (max-width: v.$bp-md) {
+      position: static;
+      background-color: v.$white;
+      transform: translateX(0%);
+    }
+  }
+  .text {
+    height: 100%;
+    padding-left: 60rem;
+    display: flex;
+    transition: padding 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    align-items: center;
+    @media (max-width: v.$bp-md) {
+      padding-left: 0;
+      color: v.$black;
+      @include t.body-med;
+    }
+  }
+  @media (max-width: v.$bp-md) {
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: center;
+    background-color: v.$white;
+  }
+}
+
+.text-icon-button--red {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 50rem;
+  @media (max-width: v.$bp-md) {
+    background-color: v.$red-1000;
+  }
+
+  &:hover {
+    .btn-icon {
+      right: 0;
+
+      transform: translateX(0%);
+    }
+    .text {
+      padding-left: 20rem;
+      background-color: v.$red-1000;
+      color: v.$white;
+      padding-right: 60rem;
+      @media (max-width: v.$bp-md) {
+        padding-right: 0;
+      }
+    }
+  }
+  .btn-icon {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 50rem;
+    height: 50rem;
+    right: 100%;
+    transform: translateX(100%);
+    background-color: v.$red-1000;
+    .icon {
+      color: v.$white;
+    }
+    @media (max-width: v.$bp-md) {
+      position: static;
+      transform: translateX(0%);
+    }
+  }
+  .text {
+    height: 100%;
+    padding-left: 60rem;
+    display: flex;
+    transition: padding 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    align-items: center;
+    @media (max-width: v.$bp-md) {
+      color: v.$white;
+    }
+  }
+}
+
+.btn--footer {
+  justify-content: center;
+  width: 227rem;
+  color: v.$black;
+  @include t.small-med;
+  @media (max-width: v.$bp-md) {
+    @include t.body-med;
+  }
+}

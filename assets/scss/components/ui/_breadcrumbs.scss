@@ -1,0 +1,48 @@
+@use '../../base/variables' as *;
+@use '../../base/typography' as t;
+.breadcrumbs {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-bottom: 20rem;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: $bp-md) {
+    margin-bottom: 16rem;
+  }
+
+
+  @media (max-width: $bp-md) {
+    margin-inline: calc(50% - 50vw);
+    width: 100vw;
+    padding-inline: 16rem;
+  }
+}
+
+.breadcrumbs > span {
+  display: inline-flex;
+  gap: 8rem;
+  min-width: max-content;
+  white-space: nowrap;
+}
+
+.breadcrumbs > span > span {
+  flex: 0 0 auto;
+
+  position: relative;
+
+
+  &::after {
+    margin: 0 8rem;
+
+  }
+
+  &:last-child::after {
+    content: none;
+  }
+
+  &.breadcrumb_last {
+    color: $red-1000;
+  }
+}

@@ -1,0 +1,69 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  position: relative;
+  height: 11rem;
+  align-items: center;
+
+  span {
+    display: block;
+    height: 1rem;
+    background: white;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    will-change: transform, opacity, width;
+    transform-origin: 50% 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(0);
+
+
+    &:nth-child(1),
+    &:nth-child(2) { width: 16rem; }
+    &:nth-child(3) { width: 12rem; }
+
+
+    &:nth-child(1) { transform: translateY(-6rem); }
+    &:nth-child(2) { transform: translateY(0); }
+    &:nth-child(3) { transform: translateY(6rem); }
+  }
+}
+
+.catalog.is-open,
+.header:has(.mobile-drawer.is-open) {
+  .burger {
+    gap: 0;
+
+    span {
+      &:nth-child(1) {
+        transform: translateY(0) rotate(45deg);
+        width: 16rem;
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(0) rotate(-45deg);
+        width: 16rem;
+      }
+    }
+  }
+}
+
+.burger--menu {
+  display: none;
+
+  span { background: v.$gray-800; }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}

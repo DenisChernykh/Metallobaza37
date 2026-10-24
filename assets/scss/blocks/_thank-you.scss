@@ -1,0 +1,74 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.container {
+}
+.thank-you {
+  .btn {
+    width: 466rem;
+    justify-content: center;
+    @media (max-width: v.$bp-md) {
+      width: 100%;
+			margin-bottom: 20rem;
+    }
+  }
+
+  @media (max-width: v.$bp-md) {
+    margin-block: 45rem;
+  }
+  // .thank-you__row
+  &__row {
+    margin-block: 180rem;
+    display: flex;
+    @media (max-width: v.$bp-md) {
+      flex-direction: column;
+      margin-block: 44rem;
+    }
+  }
+
+  // .thank-you__left
+
+  &__left {
+    flex: 1;
+  }
+
+  // .thank-you__title
+
+  &__title {
+    margin-bottom: 12rem;
+    @media (max-width: v.$bp-md) {
+      margin-bottom: 12rem;
+    }
+  }
+  // .thank-you__text
+
+  &__text {
+    width: 560rem;
+    color: v.$gray-700-text;
+    margin-bottom: 69rem;
+    @include t.big-text-med;
+    @media (max-width: v.$bp-md) {
+      width: auto;
+      margin-bottom: 20rem;
+    }
+  }
+
+  // .thank-you__right
+
+  &__right {
+    position: relative;
+    flex: 1;
+  }
+  .pattern {
+    top: auto;
+    bottom: 0;
+    right: 0;
+  }
+}
+.h1 {
+}
+.btn {
+}
+.btn--fill {
+}
+.pattern {
+}

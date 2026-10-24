@@ -1,0 +1,284 @@
+:root {
+    --datepicker-color-active: lightblue;
+    --datepicker-hover: #f0f0f0;
+    --datepicker-bg: #fff;
+    --datepicker-bg-btn: transparent;
+}
+
+.date-picker-container {
+    position: absolute;
+    height: fit-content;
+    transition: ease 0.3s;
+}
+
+.date-input {
+    position: relative;
+    width: auto;
+}
+
+.date-input.invalid {
+    border-color: red;
+    box-shadow: 0 0 0 2rem rgba(255, 0, 0, 0.14);
+}
+
+.date-picker {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: var(--datepicker-bg);
+    border: 1rem solid black;
+    border-radius: 10rem;
+    padding: 20rem;
+    gap: 10rem;
+    visibility: visible;
+    opacity: 1;
+    height: fit-content;
+    transform: translateY(0%);
+    pointer-events: unset;
+    transition: transform ease-in-out 0.3s, opacity ease-in-out 0.3s,
+        visibility ease-in-out 0.3s, left ease 0s, right ease 0s;
+    width: 340rem;
+    z-index: 12;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    // height: auto;
+    overflow: visible;
+
+    &.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-10rem);
+        pointer-events: none;
+        // height: 0;
+        overflow: hidden;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10rem;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0rem;
+        min-height: 32rem;
+        border-radius: 8rem;
+        cursor: pointer;
+        transition: ease 0.1s;
+        margin: 0 auto;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        height: 32rem;
+        min-width: 32rem;
+        border-radius: 8rem;
+        border: none;
+        transition: ease 0.3s;
+        cursor: pointer;
+        background: var(--datepicker-bg-btn);
+
+        &:hover {
+            background: var(--datepicker-hover);
+        }
+
+        &[disabled] {
+            opacity: 0.4;
+        }
+
+        &::after {
+            content: '';
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M8.01593 21.6532L6.59668 20.234L14.8312 11.9995L6.59668 3.76495L8.01593 2.3457L17.6697 11.9995L8.01593 21.6532Z' fill='%231B1C23'/%3E%3C/svg%3E");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 18rem;
+            height: 18rem;
+        }
+
+        & svg {
+            width: 18rem;
+            height: 18rem;
+            object-fit: cover;
+        }
+
+        &--prev {
+            &:after {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+
+    &__months {
+        &.hidden {
+            display: none;
+        }
+
+        &-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10rem;
+        }
+    }
+
+    &__month {
+        height: 32rem;
+        border-radius: 8rem;
+        border: none;
+        background: var(--datepicker-bg-btn);
+        transition: ease 0.3s;
+        cursor: pointer;
+        font-size: 18rem;
+        padding: 20rem 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: ease 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            background: var(--datepicker-hover);
+        }
+
+        &.active {
+            background-color: var(--datepicker-color-active);
+            pointer-events: none;
+        }
+
+        &-btn {
+            background: var(--datepicker-bg-btn);
+            border: none;
+            font-size: 18rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 8rem;
+            padding: 10rem 8rem;
+            transition: ease 0.1s;
+
+            &:hover {
+                background: var(--datepicker-hover);
+            }
+        }
+    }
+
+    &__years {
+        &.hidden {
+            display: none;
+        }
+
+        &-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            // grid-template-rows: repeat(3, 1fr);
+            gap: 10rem;
+        }
+    }
+
+    &__year {
+        background: var(--datepicker-bg-btn);
+        border: transparent;
+        border-radius: 8rem;
+        height: 32rem;
+        font-size: 18rem;
+        transition: ease 0.1s;
+        padding: 20rem 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+
+        &:hover {
+            background: var(--datepicker-hover);
+        }
+
+        &.active {
+            background-color: var(--datepicker-color-active);
+            pointer-events: none;
+        }
+
+        &-btn {
+            background: var(--datepicker-bg-btn);
+            border: none;
+            font-size: 18rem;
+            font-weight: 700;
+            border-radius: 8rem;
+            padding: 10rem 8rem;
+            transition: ease 0.1s;
+            cursor: pointer;
+
+            &:hover {
+                background: var(--datepicker-hover);
+            }
+        }
+    }
+
+    &__weekdays {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10rem;
+    }
+
+    &__weekday {
+        font-size: 16rem;
+        text-align: center;
+    }
+
+    &__calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 10rem;
+        flex-grow: 1;
+        min-height: 200rem;
+        margin-top: 10rem;
+    }
+
+    &__days {
+        &.hidden {
+            display: none;
+        }
+    }
+
+    &__day {
+        width: 32rem;
+        height: 32rem;
+        border-radius: 8rem;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        font-size: 16rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: ease 0.1s;
+
+        &.active {
+            background-color: var(--datepicker-color-active);
+            // pointer-events: none;
+
+            &:hover {
+                background: var(--datepicker-hover);
+            }
+        }
+
+        &:hover {
+            background: var(--datepicker-hover);
+        }
+    }
+}
+
+.date-picker__day.in-range {
+    background-color: var(--datepicker-hover);
+}
+
+.date-picker__day.in-range.active {
+    background-color: var(--datepicker-color-active);
+}

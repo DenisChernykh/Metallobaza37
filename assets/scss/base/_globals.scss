@@ -1,0 +1,68 @@
+@use 'variables' as *;
+@use 'typography' as t;
+
+body {
+  font-family: $font-body;
+  color: $black;
+  font-size: 16rem;
+  position: relative;
+  background-color: $gray-50-background;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (max-width: $bp-mobile-max) {
+    font-size: 14rem;
+    font-weight: 400;
+  }
+}
+
+.h1 {
+  @include t.h1;
+}
+.h2 {
+  @include t.h2;
+}
+.h3 {
+  @include t.h3;
+}
+.h4 {
+  @include t.h4;
+}
+.price {
+  @include t.big-price;
+}
+input {
+  transition: border-color 0.3s ease;
+}
+input:focus {
+  border: 1rem solid $gray-400;
+}
+
+input:focus-visible {
+  outline: 1rem solid $gray-400;
+}
+
+input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+html.is-locked,
+body.is-locked {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Для Chrome, Edge, Safari */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Для Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

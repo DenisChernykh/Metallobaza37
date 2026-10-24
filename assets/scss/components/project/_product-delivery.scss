@@ -1,0 +1,80 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+.product-delivery {
+  background-color: v.$white;
+  padding: 30rem;
+  @media (max-width: 768px) {
+    padding: 16rem;
+    margin-bottom: 32rem;
+  }
+  svg {
+    width: 24rem;
+    height: 24rem;
+  }
+  // .product-delivery__title
+
+  &__title {
+		margin-bottom: 20rem;
+    @include t.big-text-med;
+    @media (max-width: 768px) {
+      margin-bottom: 16rem;
+    }
+  }
+
+  // .product-delivery__row
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+
+    gap: 22rem;
+  }
+
+  // .product-delivery__item
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      display: block;
+      color: v.$gray-600;
+      @include t.small-reg;
+    }
+  }
+
+  // .product-delivery__type
+
+  &__type {
+    position: relative;
+    @media (max-width: v.$bp-md) {
+      @include t.small-reg;
+    }
+    &--icon {
+      padding-left: 34rem;
+      @media (max-width: v.$bp-md) {
+        padding-left: 32rem;
+        width: 220rem;
+      }
+      svg {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    &--self {
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+    }
+  }
+
+  // .product-delivery__price
+
+  &__price {
+    @media (max-width: v.$bp-md) {
+      @include t.small-med;
+    }
+  }
+}

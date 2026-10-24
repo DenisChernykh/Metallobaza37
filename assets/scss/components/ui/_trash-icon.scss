@@ -1,0 +1,10 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+
+.trash-icon {
+  svg {
+    width: 25rem;
+    height: 25rem;
+  }
+}
+

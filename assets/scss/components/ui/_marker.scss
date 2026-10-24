@@ -1,0 +1,8 @@
+@use '../../base/variables' as v;
+.marker {
+	display: block;
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  background-color: v.$red-1000;
+}

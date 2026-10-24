@@ -1,0 +1,55 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.delivery-group {
+  margin-bottom: 16rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+  // .delivery-group__title
+
+  &__title {
+    color: v.$black;
+    margin-bottom: 10rem;
+    display: flex;
+    gap: 8rem;
+    align-items: center;
+    @include t.body-med;
+    &::before {
+      content: '';
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      background-color: v.$red-1000;
+			flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      margin-bottom: 5rem;
+    }
+  }
+
+  // .delivery-group__row
+
+  &__row {
+    display: flex;
+    gap: 8rem;
+    justify-content: space-between;
+  }
+
+  // .delivery-group__desc
+
+  &__desc {
+  }
+  // .delivery-group__desh
+
+  &__desh {
+    flex-grow: 1;
+    border-bottom: 1rem solid v.$gray-400;
+  }
+
+  // .delivery-group__price
+
+  &__price {
+    color: v.$black;
+  }
+}

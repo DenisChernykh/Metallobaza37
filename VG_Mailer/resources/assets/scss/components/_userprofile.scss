@@ -1,0 +1,59 @@
+.userprofile {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+    border-radius: var(--border-radius, 18rem);
+    background: var(--white, #FFF);
+    padding: 20rem;
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        margin-right: auto;
+
+        .name {
+            color: var(--black, #000);
+            font-family: var(--main-font, 'Manrope');
+            font-size: 20rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 135%;
+
+            @media (max-width: $mobile) {
+                font-size: 16rem;
+            }
+        }
+
+        .direction {
+            color: #676767;
+            font-family: var(--main-font, 'Manrope');
+            font-size: 16rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 125%;
+
+            @media (max-width: $mobile) {
+                font-size: 14rem;
+            }
+        }
+    }
+
+    &-logout {
+        background: var(--black, #000);
+        color: var(--white, #fff);
+        border-radius: 40rem;
+        padding: 8rem 14rem;
+        margin-left: auto;
+        transition: .3s ease;
+
+        &:hover {
+            opacity: .7;
+        }
+
+        @media (max-width: $mobile) {
+            font-size: 14rem;
+        }
+    }
+}

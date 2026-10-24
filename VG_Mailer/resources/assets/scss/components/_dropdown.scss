@@ -1,0 +1,38 @@
+.dropdown {
+    position: relative;
+
+    &__block {
+        position: absolute;
+        padding: 16rem;
+        margin: 5rem 0;
+        background-color: white;
+        min-width: 250rem;
+        box-shadow: 0 5rem 20rem rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: var(--border-radius, 18rem);
+        overflow: hidden;
+        transition: opacity .35s ease, visibility .35s ease, box-shadow .35s ease, height .35s ease,
+            left .15s ease-out;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        &__item {
+            color: black;
+            padding: 12rem 16rem;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #f1f1f1;
+            }
+        }
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+}

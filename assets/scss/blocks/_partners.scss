@@ -1,0 +1,87 @@
+@use '../base/variables' as v;
+.partners {
+  // .partners__grid
+  &__top {
+    p {
+      width: 568rem;
+      color: v.$gray-700-text;
+      @media (max-width: 768px) {
+        width: auto;
+      }
+    }
+    h2 {
+      @media (max-width: 768px) {
+        margin-bottom: 8rem;
+      }
+    }
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(264rem, 1fr));
+    gap: 40rem;
+    @media (max-width: 768px) {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 12rem;
+      -webkit-overflow-scrolling: touch;
+      margin-right: -16rem;
+			margin-left: -16rem;
+			padding-inline: 16rem	;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      margin-bottom: 24rem;
+    }
+  }
+  &__card {
+    background-color: v.$white;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    min-height: 200rem;
+    padding-inline: 40rem;
+		border: 1rem solid v.$gray-300-stroke;
+    img {
+      width: auto;
+			position: relative;
+			z-index: 1;
+    }
+    &:hover {
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+      &::after {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    @media (max-width: 768px) {
+      min-height: auto;
+      flex-shrink: 0;
+      min-height: 115rem;
+      width: 150rem;
+    }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+
+      right: 0;
+      width: 21rem;
+      height: 21rem;
+      background-color: v.$gray-50-background;
+      transition: all 0.3s ease-in-out;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}
+.top {
+}

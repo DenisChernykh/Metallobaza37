@@ -1,0 +1,66 @@
+@use '../base/typography' as t;
+@use '../base/variables' as v;
+
+.top-about {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  &__link {
+    @include t.h3;
+  }
+  .text-icon-button {
+    .text {
+      color: v.$white;
+    }
+  }
+  &__text {
+    margin-bottom: 20rem;
+    @media (max-width: 768px) {
+      margin-bottom: 16rem;
+    }
+  }
+  &__title {
+    @media (min-width: 768px) {
+      margin-bottom: 24rem;
+    }
+  }
+  &__content {
+  }
+  &__col {
+    &--left {
+      width: 766rem;
+      @media (max-width: v.$bp-md) {
+        width: auto;
+        margin-bottom: 24rem;
+      }
+    }
+    &--right {
+      width: 543rem;
+      @media (max-width: v.$bp-md) {
+        width: auto;
+      }
+    }
+  }
+}
+
+.top-about__links {
+  display: flex;
+  gap: 60rem;
+  margin-bottom: 60rem;
+  @media (max-width: 768px) {
+    margin-bottom: 16rem;
+  }
+}
+
+.top-about__text p + p {
+  margin-top: 20rem;
+  @media (max-width: v.$bp-md) {
+    margin-top: 12rem;
+  }
+}

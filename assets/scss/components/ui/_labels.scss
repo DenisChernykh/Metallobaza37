@@ -1,0 +1,25 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+.label {
+  display: inline-block;
+  padding: 5rem;
+  background-color: v.$red-1000;
+  color: v.$white;
+  @include t.body-reg;
+
+  &--black {
+    background-color: v.$gray-800;
+    color: v.$white;
+  }
+  @media (max-width: 768px) {
+    @include t.small-med;
+  }
+}
+
+.label--black[hidden] {
+  display: none;
+}
+
+.label[hidden] {
+  display: none;
+}

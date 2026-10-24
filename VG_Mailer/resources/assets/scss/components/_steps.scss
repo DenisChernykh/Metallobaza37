@@ -1,0 +1,15 @@
+[data-step] {
+    &.active {
+        animation: showIn .4s ease;
+    }
+}
+
+@keyframes showIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

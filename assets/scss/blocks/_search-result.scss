@@ -1,0 +1,93 @@
+@use '../base/variables' as *;
+@use '../base/typography' as t;
+.page {
+}
+.search-results {
+  p {
+    color: $gray-700-text;
+    margin-bottom: 30rem;
+    @media (max-width: $bp-md) {
+      margin-bottom: 20rem;
+    }
+  }
+  .h2 {
+    margin-bottom: 10rem;
+    @media (max-width: $bp-md) {
+      margin-bottom: 8rem;
+    }
+  }
+  // .search-results__none
+
+  &__none {
+    padding: 0;
+  }
+
+  // .search-results__title
+
+  &__title {
+  }
+
+  // .search-results__list
+
+  &__list {
+    display: flex;
+    margin-bottom: 30rem;
+    flex-direction: column;
+    gap: 10rem;
+    position: relative;
+  }
+}
+.container {
+}
+.top {
+}
+.company-info {
+  // .company-info__top
+
+  &__top {
+  }
+}
+.h2 {
+}
+.search-result {
+  // .search-result__list-title
+
+  &__list-title {
+    font-weight: 500;
+    margin-bottom: 20rem;
+    @media (max-width: $bp-md) {
+      margin-bottom: 12rem;
+    }
+  }
+
+  // .search-result__btn
+
+  &__btn {
+    width: 250rem;
+    @media (max-width: $bp-md) {
+      width: 100%
+    }
+  }
+}
+.search-resultt {
+  // .search-resultt__item
+
+  &__item {
+    position: relative;
+    padding-left: 15rem;
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      background-color: $red-1000;
+      width: 5rem;
+      height: 5rem;
+      left: 0;
+      top: 9rem;
+    }
+  }
+}
+.btn {
+}
+.btn--fill {
+}

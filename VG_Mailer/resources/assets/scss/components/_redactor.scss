@@ -1,0 +1,58 @@
+.redactor {
+    .ql-toolbar.ql-snow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10rem;
+        border: 0;
+        background: #F5F5F5;
+        border-top-left-radius: 12rem;
+        border-top-right-radius: 12rem;
+        font-family: var(--main-font, 'Manrope');
+        padding: 10rem 15rem;
+
+        .ql-formats {
+            margin: 0;
+        }
+
+        .ql-picker {
+            &.ql-expanded {
+                .ql-picker-label {
+                    background-color: var(--white, #fff);
+                    border-top-left-radius: 8rem;
+                    border-top-right-radius: 8rem;
+                }
+            }
+        }
+
+        .ql-picker-options {
+            border-bottom-left-radius: 8rem;
+            border-bottom-right-radius: 8rem;
+        }
+    }
+
+    .ql-container {
+        min-height: 80rem;
+        font-family: var(--main-font, 'Manrope');
+        font-size: 17rem;
+
+        @media (max-width: $mobile) {
+            font-size: 14rem;
+        }
+    }
+
+    .ql-container.ql-snow {
+        border: 0;
+        background: #F5F5F5;
+        border-bottom-left-radius: 12rem;
+        border-bottom-right-radius: 12rem;
+    }
+
+    .ql-editor {
+        padding: 12rem 25rem;
+    }
+
+    .ql-editor.ql-blank::before {
+        left: 25rem;
+        right: 25rem;
+    }
+}

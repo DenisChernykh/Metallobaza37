@@ -1,0 +1,14 @@
+.site-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 800;
+
+  &.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

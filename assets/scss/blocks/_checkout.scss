@@ -1,0 +1,170 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.cart.cart-top__title {
+  margin-bottom: 40rem;
+  @media (max-width: v.$bp-md) {
+    margin-bottom: 20rem;
+    flex-direction: column;
+  }
+}
+
+.cart {
+  .cart__row {
+    @media (max-width: v.$bp-md) {
+      flex-direction: column;
+    }
+  }
+
+  .cart__right {
+    @media (max-width: v.$bp-md) {
+      display: contents;
+    }
+  }
+
+  .checkbox__box {
+    flex-shrink: 0;
+  }
+  .cart-summary {
+    @media (max-width: v.$bp-md) {
+      order: 1;
+    }
+  }
+  .product-delivery {
+    @media (max-width: v.$bp-md) {
+      order: 3;
+    }
+  }
+  .cart__left {
+    @media (max-width: v.$bp-md) {
+      order: 2;
+    }
+  }
+}
+
+.checkout-form {
+  padding: 30rem;
+  background-color: v.$white;
+  .btn {
+    margin-bottom: 30rem;
+    @media (max-width: v.$bp-md) {
+      margin-bottom: 20rem;
+    }
+  }
+  .checkbox {
+    margin-bottom: 30px;
+    @media (max-width: v.$bp-md) {
+      margin-bottom: 20rem;
+    }
+  }
+  // .checkout-form__field
+
+  @media (max-width: v.$bp-md) {
+    padding: 16rem;
+  } // .checkout-from__title
+  &__title {
+    margin-bottom: 30rem;
+    @media (max-width: v.$bp-md) {
+      margin-bottom: 16rem;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    &:not(:last-child) {
+      margin-bottom: 8rem;
+    }
+  }
+
+  // .checkout-form__label
+
+  &__label {
+    @include t.small-reg;
+  }
+
+  // .checkout-form__input
+
+  &__input {
+  }
+
+  // .checkout-form__text
+
+  &__text {
+    color: v.$gray-900;
+  }
+  // .checkout-form__wrapper
+  &__wrapper {
+    display: grid;
+    gap: 15rem;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 30rem;
+    margin-top: 20rem;
+    @media (max-width: v.$bp-md) {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20rem;
+      margin-top: 0;
+      gap: 0;
+    }
+  }
+
+  &__text {
+    @include t.small-reg;
+  }
+}
+
+.h3 {
+}
+.form-feedback {
+  // .form-feedback__field
+
+  // .form-feedback__label
+
+  &__label {
+  }
+
+  // .form-feedback__input
+
+  &__input {
+  }
+
+  // .form-feedback__politics
+
+  &__politics {
+  }
+}
+.checkout-feedback {
+  // .checkout-feedback__wrapper
+
+  &__wrapper {
+  }
+}
+.checkbox {
+  // .checkbox__label
+
+  &__label {
+  }
+
+  // .checkbox__input
+
+  &__input {
+  }
+
+  // .checkbox__box
+
+  &__box {
+  }
+
+  // .checkbox__text
+
+  &__text {
+  }
+}
+.btn {
+}
+.btn--red {
+}
+.btn--long {
+}
+

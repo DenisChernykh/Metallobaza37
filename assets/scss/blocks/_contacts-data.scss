@@ -1,0 +1,62 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.contacts-data {
+  position: relative;
+  .pattern {
+    bottom: 0;
+    top: auto;
+    right: 0;
+    left: auto;
+    rotate: 90deg;
+  }
+  .container {
+  }
+  &__grid {
+    position: relative;
+    padding: 40rem;
+    background-color: v.$gray-300-stroke;
+    display: flex;
+    gap: 40rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 24rem;
+      padding: 16rem;
+    }
+  }
+
+  &__column {
+    flex: 1;
+    min-width: 240rem;
+  }
+
+  &__label {
+		color: v.$gray-700-text;
+
+    margin-bottom: 10rem;
+    @include t.small-reg;
+    @media (max-width: 768px) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__value {
+    margin-bottom: 16rem;
+    @media (max-width: 768px) {
+      margin-bottom: 12rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__email {
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

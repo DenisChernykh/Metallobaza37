@@ -1,0 +1,108 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.warranty {
+  // .warranty__wrapper
+  color: v.$gray-800;
+  .h2 {
+    color: v.$black;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  // .warranty__content
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 593rem;
+    gap: 15rem;
+    @media (max-width: 768px) {
+      width: auto;
+      gap: 12rem;
+    }
+  }
+
+  // .warranty__text
+
+  &__text {
+  }
+
+  // .warranty__conditions
+
+  &__conditions {
+  }
+
+  // .warranty__item--title
+
+  &__item--title {
+    color: v.$black;
+    margin-bottom: 10rem;
+    @media (max-width: 768px) {
+      margin-bottom: 8rem;
+    }
+  }
+
+  // .warranty__item
+
+  &__item {
+    display: flex;
+    gap: 10rem;
+    align-items: center;
+  }
+
+  // .warranty__text--last
+
+  &__text--last {
+  }
+
+  // .warranty__image
+
+  &__image {
+    width: 720rem;
+    @media (max-width: 768px) {
+      width: auto;
+    }
+  }
+}
+.container {
+}
+.top {
+}
+.delivery {
+  // .delivery__contacts
+
+  &__contacts {
+    margin-bottom: 24rem;
+  }
+
+  // .delivery__contact
+
+  &__contact {
+  }
+
+  // .delivery__contact-label
+
+  &__contact-label {
+  }
+
+  // .delivery__contact-phone
+
+  &__contact-phone {
+  }
+
+  // .delivery__contact-mail
+
+  &__contact-mail {
+  }
+
+  // .delivery__image
+
+  &__image {
+  }
+}

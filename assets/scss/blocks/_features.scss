@@ -1,0 +1,53 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.features-cards {
+  margin-top: 60rem;
+  color: v.$black;
+  position: relative;
+  justify-content: space-between;
+  gap: 40rem;
+  z-index: 2;
+  display: flex;
+  @media (max-width: v.$bp-md) {
+    margin-top: 40rem;
+  }
+
+  // .features-cards__item
+  .container {
+    display: flex;
+    gap: 40rem;
+    flex: auto;
+  }
+  &__item {
+    padding: 30rem;
+    background-color: v.$white;
+    flex: 1;
+    @media (max-width: v.$bp-md) {
+      width: 300rem;
+      padding: 16rem;
+    }
+  }
+  &__position {
+		padding-bottom: 20rem;
+    margin-bottom: 20rem;
+    border-bottom: 1rem solid v.$gray-400;
+    display: flex;
+    gap: 15rem;
+    align-items: center;
+    @include t.h3;
+    &:before {
+      content: '';
+      display: block;
+      width: 6rem;
+      height: 6rem;
+      background-color: v.$red-1000;
+    }
+  }
+  &__title {
+    margin-bottom: 20rem;
+    @include t.big-text-med;
+  }
+  &__text {
+    color: v.$gray-700-text;
+  }
+}

@@ -1,0 +1,16 @@
+.product-grid {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(auto-fill, minmax(339rem, 1fr));
+  gap: 40rem;
+  width: 100%;
+  @media (max-width: 768px) {
+    gap: 8rem;
+    grid-template-columns: repeat(auto-fill, minmax(160rem, 1fr));
+    order: 4;
+  }
+}
+
+.product-grid.hidden {
+  display: none;
+}

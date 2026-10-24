@@ -1,0 +1,21 @@
+<section class="catalog-grid" aria-label="Категории каталога">
+	<div class="container">
+		<div class="catalog-grid__top">
+
+			<h2 class="h2">Каталог товаров</h2>
+			<?php get_template_part('template-parts/buttons/text-icon-button', null, ['class' => 'text-icon-button--red']) ?>
+		</div>
+		<ul class="catalog-grid__list">
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+			<?php get_template_part('template-parts/catalog-card') ?>
+		</ul>
+		<button class="btn">Показать еще</button>
+	</div>
+</section>

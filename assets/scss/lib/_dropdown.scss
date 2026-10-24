@@ -1,0 +1,34 @@
+[data-disclosure] {
+  > [data-panel] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40rem);
+    pointer-events: none;
+    a,
+    button {
+      pointer-events: auto;
+    }
+
+    &:not(:has(a:hover, button:hover)) {
+      cursor: default;
+    }
+    transition: opacity .3s ease, transform .3s ease;
+    position: absolute;
+  }
+
+  &.is-open > [data-panel] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+@media (min-width: 769px) {
+  [data-disclosure][data-mobile] > [data-panel] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: static;
+  }
+}

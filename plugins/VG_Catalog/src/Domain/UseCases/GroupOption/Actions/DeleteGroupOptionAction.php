@@ -1,0 +1,24 @@
+<?php
+
+namespace VG_Catalog\Domain\UseCases\GroupOption\Actions;
+
+use VG_Catalog\Domain\UseCases\GroupOption\Dto\GroupOptionIdDTO;
+use VG_Catalog\Domain\UseCases\GroupOption\GroupOption;
+use VG_Catalog\Domain\UseCases\GroupOption\GroupOptionRepository;
+
+class DeleteGroupOptionAction
+{
+    public function __construct(
+        protected GroupOptionRepository $repository = new GroupOptionRepository()
+    ){}
+
+    public function __invoke(GroupOptionIdDTO $groupOptionIdDTO): bool|\InvalidArgumentException
+    {
+        $group = GroupOption::where('post_id', $groupOptionIdDTO->group_option_id)->first();
+        if (!$group) {
+            throw new \InvalidArgumentException('Group options not found', 404);
+        }
+        wp_delete_post($group->post_id, true);
+        return $this->repository->delete($group);
+    }
+}

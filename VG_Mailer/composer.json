@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "psr-4": {
+      "VG_Mailer\\src\\": "src/"
+    }
+  },
+  "require": {
+    "phpmailer/phpmailer": "^6.10",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "ext-curl": "*"
+  }
+}

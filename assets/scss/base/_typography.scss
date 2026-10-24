@@ -1,0 +1,219 @@
+@use 'variables' as *;
+@use 'sass:string';
+@mixin h1 {
+  font-family: $font-display;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 44rem;
+    font-weight: 700;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 20rem;
+    font-weight: 700;
+  }
+}
+
+@mixin h2 {
+  font-family: $font-display;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 32rem;
+    font-weight: 700;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 20rem;
+    font-weight: 700;
+  }
+}
+
+@mixin h3 {
+  text-transform: uppercase;
+  font-family: $font-display;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 26rem;
+    font-weight: 700;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 16rem;
+    font-weight: 700;
+  }
+}
+
+@mixin h4 {
+  font-family: $font-display;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 18rem;
+    font-weight: 700;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 14rem;
+    font-weight: 700;
+  }
+}
+
+@mixin big-price {
+  font-family: $font-body;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 28rem;
+    font-weight: 600;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 20rem;
+    font-weight: 600;
+  }
+}
+
+@mixin big-text-med {
+  font-family: $font-body;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 20rem;
+    font-weight: 500;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 16rem;
+    font-weight: 500;
+  }
+}
+
+@mixin big-text-bold {
+  font-family: $font-body;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 20rem;
+    font-weight: 700;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 20rem;
+    font-weight: 700;
+  }
+}
+
+@mixin body-reg {
+  @media (min-width: $bp-desktop-min) {
+    font-size: 16rem;
+    font-weight: 400;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 14rem;
+    font-weight: 400;
+  }
+}
+
+@mixin body-med {
+  font-family: $font-body;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 16rem;
+    font-weight: 500;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 14rem;
+    font-weight: 500;
+  }
+}
+
+@mixin small-reg {
+  font-family: $font-body;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 14rem;
+    font-weight: 400;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 12rem;
+    font-weight: 400;
+  }
+}
+
+@mixin small-med {
+  font-family: $font-body;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 14rem;
+    font-weight: 500;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 12rem;
+    font-weight: 500;
+  }
+}
+
+@mixin price {
+  font-family: $font-body;
+  line-height: 1.4;
+  letter-spacing: 0;
+  @media (min-width: $bp-desktop-min) {
+    font-size: 16rem;
+    font-weight: 700;
+  }
+  @media (max-width: $bp-mobile-max) {
+    font-size: 12rem;
+    font-weight: 700;
+  }
+}
+
+.red-color {
+  color: $red-active;
+}
+
+.gray-600-color {
+  color: $gray-600;
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: string.unquote($string: 'calc(100vw / 1920)');
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: string.unquote('calc(100vw/2560)');
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: string.unquote($string: 'calc(100vw/360)');
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  html {
+    font-size: string.unquote($string: 'calc(100vw/1200)');
+  }
+}
+
+section,
+.section {
+  position: relative;
+  padding-block: 80rem;
+  @media (max-width: 768px) {
+    padding-block: 44rem;
+  }
+}
+
+section:has(.breadcrumbs),
+.section:has(.breadcrumbs) {
+  padding-top: 40rem;
+  @media (max-width: 768px) {
+    padding-top: 24rem;
+  }
+}

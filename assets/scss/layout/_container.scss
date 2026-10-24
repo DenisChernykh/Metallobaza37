@@ -1,0 +1,11 @@
+@use '../base/variables' as v;
+.container {
+  margin-inline: auto;
+  max-width: 1480rem;
+  @media (max-width: 1200px) {
+    max-width: 1100rem;
+  }
+  @media (max-width: v.$bp-md) {
+    max-width: 328rem;
+  }
+}

@@ -1,0 +1,115 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+
+.catalog-grid {
+  background-color: v.$gray-50-background;
+  h2 {
+    @media (max-width: 768px) {
+      margin-bottom: 12rem;
+    }
+  }
+  .btn {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+      margin-top: 24rem;
+      margin-bottom: 24rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    @media (max-width: 768px) {
+      display: contents;
+      margin-bottom: 24rem;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 8rem;
+      margin-bottom: 24rem;
+    }
+  }
+
+  &__item {
+    border-right: 1rem solid v.$red-1000;
+    min-width: 0;
+    background-color: v.$white;
+
+    @media (max-width: 768px) {
+      border-right: none;
+    }
+    img {
+      transition: transform 0.3s ease;
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .text-icon-button {
+    @media (max-width: 768px) {
+      order: 3;
+    }
+  }
+  .container {
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+// Карточка
+.catalog-tile {
+  display: flex;
+  gap: 15rem;
+  align-items: center;
+  padding-right: 15rem;
+  &__thumb {
+    display: block;
+    width: 90rem;
+    height: 90rem;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      display: block;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 768px) {
+      width: 50rem;
+      height: 50rem;
+    }
+  }
+  &__body {
+  }
+  &__title {
+    @include t.body-med;
+  }
+}
+
+.catalog-grid:has(.breadcrumbs) {
+  .catalog-grid__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}

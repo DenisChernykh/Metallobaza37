@@ -1,0 +1,54 @@
+@use '../../base/variables' as v;
+@use '../../base/typography' as t;
+.quantity {
+  display: inline-flex;
+  align-items: center;
+  // .quantity__btn
+
+  &__btn {
+    width: 34rem;
+    height: 40rem;
+    background-color: v.$gray-50-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    user-select: none;
+  }
+
+  // .quantity__btn--minus
+
+  &__btn--minus {
+  }
+
+  // .quantity__input
+
+  &__input,
+  &__value {
+    box-sizing: border-box;
+    padding: 0 6rem;
+    text-align: center;
+    width: 50rem;
+    height: 40rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // .quantity__btn--plus
+
+  &__btn--plus {
+  }
+  &__text {
+    display: inline-block;
+    width: 40rem;
+  }
+}
+
+.quantity-block {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-block[hidden] {
+  display: none;
+}

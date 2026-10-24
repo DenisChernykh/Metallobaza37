@@ -1,0 +1,73 @@
+@use '../base/variables' as v;
+@use '../base/typography' as t;
+.error-hero {
+  .btn {
+    text-align: center;
+    width: 466rem;
+    @media (max-width: v.$bp-md) {
+      width: 100%;
+    }
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .error-figure {
+    font-size: 400rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 0 20px;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    &--1 {
+      background: url('../../img/404/1.webp') top/cover;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    &--2 {
+      background: url('../../img/404/3.webp') 100rem / cover;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    &--3 {
+      background: url('../../img/404/2.webp') top/cover;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    @media (max-width: v.$bp-md) {
+      font-size: 150rem;
+    }
+  }
+}
+
+.error-figures {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rem;
+  @media (max-width: v.$bp-md) {
+    margin-bottom: 10rem;
+  }
+}
+
+.error-sub {
+  text-align: center;
+  width: 600rem;
+  color: v.$gray-700-text;
+  margin-bottom: 60rem;
+  @include t.big-text-med;
+  @media (max-width: v.$bp-md) {
+    width: auto;
+    margin-bottom: 24rem;
+  }
+}
+
+.error-title {
+  margin-bottom: 10rem;
+  text-align: center;
+}

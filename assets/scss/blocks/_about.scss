@@ -1,0 +1,52 @@
+@use '../base/variables' as v;
+.about {
+  position: relative;
+  color: #fff;
+  margin-top: 80rem;
+  margin-bottom: 80rem;
+  &__title {
+    @media (max-width: 1200px) {
+      width: 80%;
+    }
+    @media (max-width: v.$bp-md) {
+      width: auto%;
+    }
+  }
+  .pattern {
+    @media (max-width: v.$bp-md) {
+      left: auto;
+      right: 0;
+      transform: rotate(90deg);
+    }
+  }
+
+  @media (max-width: v.$bp-md) {
+    margin-top: 44rem;
+    margin-bottom: 44rem;
+  }
+
+  &__bg {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(../../img/about/bg.webp) center/cover no-repeat;
+  }
+  &__blur {
+    width: calc((843 / 1920) * 100%);
+    backdrop-filter: blur(30px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+
+    height: 100%;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    @media (max-width: v.$bp-md) {
+      width: 100%;
+    }
+  }
+}

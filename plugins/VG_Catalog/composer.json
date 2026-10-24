@@ -1,0 +1,19 @@
+{
+  "autoload": {
+    "psr-4": {
+      "VG_Catalog\\": "src/",
+      "VG_Catalog\\Helpers\\": "includes/Helpers/"
+    }
+  },
+  "require": {
+    "monolog/monolog": "^2.10",
+    "illuminate/database": "^8.83",
+    "spatie/data-transfer-object": "^3.9",
+    "symfony/validator": "^6.2",
+    "zircote/swagger-php": "^5.4",
+    "illuminate/pagination": "^8.83"
+  },
+  "scripts": {
+    "generate-docs-yaml": "php generateApi.php"
+  }
+}

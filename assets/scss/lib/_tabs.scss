@@ -1,0 +1,26 @@
+[data-tabs] {
+  [data-triggers] {
+    [data-tab] {
+      &.is-active {
+        font-weight: bold;
+      }
+    }
+  }
+
+  [data-panels] {
+    [data-panel] {
+      display: none;
+      opacity: 0;
+      transform: translateY(-20rem);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+
+      &.is-active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+%flex-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%flex-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+%flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+%flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content
+    }
+
+    &:-moz-placeholder {
+        @content
+    }
+
+    &::-moz-placeholder {
+        @content
+    }
+
+    &:-ms-input-placeholder {
+        @content
+    }
+}
+
+@mixin mask-image($color: currentColor) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+    mask-position: center;
+    background-color: $color;
+}
+
+/* headings */
